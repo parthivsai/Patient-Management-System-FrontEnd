@@ -1,0 +1,11 @@
+.container-color {
+  background-color: #eee;
+}
+.imgstyle {
+  width: 185px;
+  background-color: #eee;
+}
+
+.gradient-custom-2 {
+  background: linear-gradient(to right, #42275a, #734b6d);
+}
