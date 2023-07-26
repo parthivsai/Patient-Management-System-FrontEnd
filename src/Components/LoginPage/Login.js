@@ -22,20 +22,16 @@ const Login = () => {
     event.preventDefault();
     dispatch(userLogin({ username, password }));
     if (token != null) {
-      if (role == "PATIENT") {
-        navigate("/home/patient");
-      } else if (role == "DOCTOR") {
-        navigate("/home/doctor");
+      if (role.length > 1) {
+        navigate("/home/profile");
       }
     }
   };
 
   useEffect(() => {
     if (token && role) {
-      if (role == "PATIENT") {
-        navigate("/home/patient");
-      } else if (role == "DOCTOR") {
-        navigate("/home/doctor");
+      if (role.length > 1) {
+        navigate("/home/profile");
       }
     }
   }, [token, role]);

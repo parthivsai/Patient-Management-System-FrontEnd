@@ -9,11 +9,13 @@ const initialState = {
   token: null,
   role: "",
   username: "",
+  userDetails: null,
 };
 
 var role = "";
 var uN = "";
 var tkn = "";
+var UD = null;
 
 export const userLogin = createAsyncThunk(
   "users/login",
@@ -43,6 +45,8 @@ export const userLogin = createAsyncThunk(
     role = foundUser[1];
     uN = username;
     tkn = foundUser[0];
+    UD = foundUser[2];
+    console.log("User Details in slice: " + UD);
     return foundUser[2];
   }
 );
@@ -73,11 +77,10 @@ const userSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    // onLogout: (state, action) => {
-    //   state.token = null;
-    //   state.messageLogin = "";
-    //   state.userEmail = "";
-    // },
+    onLogout: (state, action) => {
+      state.token = null;
+      state.messageLogin = "";
+    },
     onReset: (state, action) => {
       state.messageLogin = "";
       state.messageSignup = "";
@@ -97,6 +100,8 @@ const userSlice = createSlice({
       state.token = tkn;
       state.role = role;
       state.username = uN;
+      state.userDetails = action.payload;
+      console.log("in state: " + state.userDetails);
     });
     builder.addCase(userLogin.rejected, (state, action) => {
       state.messageLogin = "Incorrect email/password. Try again!";
