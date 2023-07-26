@@ -31,7 +31,7 @@ const PatientSidebar = () => {
       icon: <BiSolidUserDetail />,
     },
     {
-      path: "/home/visits",
+      path: "/home/patientVisits",
       title: "Visit History",
       name: "VisitHistoey",
       icon: <SlCalender />,

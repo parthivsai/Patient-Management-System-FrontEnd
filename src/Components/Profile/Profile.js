@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { BiSolidUserRectangle, BiSolidUserCircle } from "react-icons/bi";
 import "./Profile.css";
 
 const Profile = () => {
@@ -24,6 +25,40 @@ const Profile = () => {
         </i>
       </h4>
       {console.log(userDetails)}
+      <div className="profile-card-container">
+        <div className="profile-card-title text-center">
+          <BiSolidUserCircle size={80} />
+          <h3> {userDetails.name}</h3>
+          <hr />
+        </div>
+        {role == "DOCTOR" && (
+          <div className="profile-card-content">
+            <div className="card-body">
+              <p>
+                <i>Email : {userDetails.email}</i>
+              </p>
+              <p>
+                <i>Specialization : {userDetails.specialization}</i>
+              </p>
+            </div>
+          </div>
+        )}
+        {role == "PATIENT" && (
+          <div className="profile-card-content">
+            <div className="card-body">
+              <p>
+                <i>Email : {userDetails.email}</i>
+              </p>
+              <p>
+                <i>Age : {userDetails.age}</i>
+              </p>
+              <p>
+                <i>Address : {userDetails.address}</i>
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

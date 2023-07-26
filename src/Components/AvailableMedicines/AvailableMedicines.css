@@ -1,0 +1,87 @@
+.tableFixHead {
+  overflow-y: auto;
+  height: 400px;
+  margin-left: 200px;
+  max-width: 1000px;
+}
+.tableFixHead thead th {
+  position: sticky;
+  top: 0px;
+}
+table {
+  border: none;
+  width: 100%;
+  margin-top: 5px;
+}
+th,
+td {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+}
+th {
+  background: #eee;
+}
+
+tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+tbody tr:hover {
+  background-color: #f5f5f5;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+th {
+  background-color: rgb(239, 224, 115);
+  border-top: none;
+}
+th:first-of-type {
+  border-top-left-radius: 10px;
+}
+
+th:last-of-type {
+  border-top-right-radius: 10px;
+}
+
+tr:last-of-type td:first-of-type {
+  border-bottom-left-radius: 10px;
+}
+
+tr:last-of-type td:last-of-type {
+  border-bottom-right-radius: 10px;
+}
+
+.outer {
+  text-align: center;
+  /* margin-top: 10px; */
+}
+.inner {
+  display: inline-block;
+  /* margin-top: 10px; */
+}
+
+.right {
+  margin-right: 1.5rem;
+  /* margin-top: 4px; */
+}
+
+.searchFilter {
+  width: 20% !important;
+  float: right;
+  margin-right: 200px !important;
+  margin-bottom: 0px;
+}
+
+.searchLabel {
+  margin-left: 60% !important;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
