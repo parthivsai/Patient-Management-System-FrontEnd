@@ -9,6 +9,10 @@ import AvailableMedicines from "../AvailableMedicines/AvailableMedicines";
 import PatientsConsulted from "../PatientsConsulted/PatientsConsulted";
 import PatientVisits from "../PatientVisits/PatientVisits";
 import MedicinesPrescribed from "../MedicinesPrescribed/MedicinesPrescribed";
+import AdminSidebar from "../Sidebar/AdminSidebar";
+import Patients from "../Patients/Patients";
+import Doctors from "../Doctors/Doctors";
+import Medicines from "../Medicines/Medicines";
 
 const Home = () => {
   var { loading, messageLogin, messageSignup, error, token, role } =
@@ -18,6 +22,7 @@ const Home = () => {
       {console.log(role)}
       {role == "PATIENT" && <PatientSidebar />}
       {role == "DOCTOR" && <DoctorSidebar />}
+      {role == "ADMIN" && <AdminSidebar />}
 
       <Routes>
         <Route path={"/dashboard"} element={<Dashboard />} />
@@ -29,6 +34,9 @@ const Home = () => {
           path={"/medicinesPrescribed"}
           element={<MedicinesPrescribed />}
         />
+        <Route path="/home/patients" element={<Patients />} />
+        <Route path="/home/doctors" element={<Doctors />} />
+        <Route path="/home/medicines" element={<Medicines />} />
 
         {/* <Route path={"/godowns"} element={<Godowns />} />
         <Route path={"/addGodown"} element={<AddGodown />} />

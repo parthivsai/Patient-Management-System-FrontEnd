@@ -63,7 +63,6 @@ const MedicinesPrescribed = () => {
                 <th>Medicine Price</th>
                 <th>ExpiryDate</th>
                 <th>Given By</th>
-                {/* {role === "admin" && <th>Actions</th>} */}
               </tr>
             </thead>
             <tbody>
@@ -74,24 +73,6 @@ const MedicinesPrescribed = () => {
                     <td>{item.medicine.price}</td>
                     <td>{item.medicine.expiryDate}</td>
                     <td>{item.doctor.name}</td>
-                    {/* <td>{item}</td> */}
-
-                    <td>
-                      {/* {role === "admin" && (
-                        <AiOutlineEdit
-                          onClick={() => {
-                            //   navigate(`/home/updateEmployee?empid=${item.id}`);
-                          }}
-                          className="UpdateIcon mx-2"
-                        />
-                      )}
-                      {role === "admin" && (
-                        <MdOutlineDelete
-                          // onClick={() => handleDelete(item)}
-                          className="DeleteIcon mx-1"
-                        />
-                      )} */}
-                    </td>
                   </tr>
                 ))}
             </tbody>

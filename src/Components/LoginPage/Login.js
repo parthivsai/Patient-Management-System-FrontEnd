@@ -22,7 +22,9 @@ const Login = () => {
     event.preventDefault();
     dispatch(userLogin({ username, password }));
     if (token != null) {
-      if (role.length > 1) {
+      if (role.length > 1 && role === "ADMIN") {
+        navigate("/home/admin");
+      } else if (role.length > 1) {
         navigate("/home/profile");
       }
     }
@@ -30,7 +32,9 @@ const Login = () => {
 
   useEffect(() => {
     if (token && role) {
-      if (role.length > 1) {
+      if (role.length > 1 && role === "ADMIN") {
+        navigate("/home/admin");
+      } else if (role.length > 1) {
         navigate("/home/profile");
       }
     }
