@@ -41,7 +41,8 @@ const Login = () => {
   }, [token, role]);
 
   const onSignupClick = () => {
-    // navigate to signup page and in that include signup api (add Api);
+    // navigate to signup page;
+    navigate("/register");
   };
 
   const onResetClick = (event) => {

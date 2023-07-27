@@ -4,6 +4,8 @@ import Login from "./Components/LoginPage/Login";
 import { Navigate } from "react-router-dom";
 import Home from "./Components/Home/Home";
 import Register from "./Components/Register/Register";
+import DoctorRegister from "./Components/Register/DoctorRegister";
+import PatientRegister from "./Components/Register/PatientRegister";
 
 function App() {
   return (
