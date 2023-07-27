@@ -1,0 +1,35 @@
+.overLay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+.cardedit {
+  overflow: auto;
+  position: absolute !important;
+  width: 40%;
+  max-height: 90vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(247, 241, 241);
+  font-family: sans-serif;
+  z-index: 10;
+}
+.BottomSection {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 10px;
+}
+
+.saveButton {
+  margin-left: 42%;
+}
+.closeButton {
+  float: right;
+  margin-right: 20px;
+  margin-top: 10px;
+}

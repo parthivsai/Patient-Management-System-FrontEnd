@@ -34,9 +34,9 @@ const Home = () => {
           path={"/medicinesPrescribed"}
           element={<MedicinesPrescribed />}
         />
-        <Route path="/home/patients" element={<Patients />} />
-        <Route path="/home/doctors" element={<Doctors />} />
-        <Route path="/home/medicines" element={<Medicines />} />
+        <Route path="/patients" element={<Patients />} />
+        <Route path="/doctors" element={<Doctors />} />
+        <Route path="/medicines" element={<Medicines />} />
 
         {/* <Route path={"/godowns"} element={<Godowns />} />
         <Route path={"/addGodown"} element={<AddGodown />} />

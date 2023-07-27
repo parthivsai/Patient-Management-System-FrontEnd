@@ -23,7 +23,7 @@ const Login = () => {
     dispatch(userLogin({ username, password }));
     if (token != null) {
       if (role.length > 1 && role === "ADMIN") {
-        navigate("/home/admin");
+        navigate("/home/dashboard");
       } else if (role.length > 1) {
         navigate("/home/profile");
       }
@@ -33,7 +33,7 @@ const Login = () => {
   useEffect(() => {
     if (token && role) {
       if (role.length > 1 && role === "ADMIN") {
-        navigate("/home/admin");
+        navigate("/home/dashboard");
       } else if (role.length > 1) {
         navigate("/home/profile");
       }
@@ -83,7 +83,7 @@ const Login = () => {
                           type="text"
                           id="form2Example11"
                           className="form-control"
-                          placeholder="Enter your userName"
+                          placeholder="Enter your username"
                           value={username}
                           onChange={(event) => setUsername(event.target.value)}
                           required

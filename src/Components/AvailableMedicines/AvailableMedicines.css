@@ -1,6 +1,6 @@
 .tableFixHead {
   overflow-y: auto;
-  height: 400px;
+  height: 350px;
   margin-left: 200px;
   max-width: 1000px;
 }
@@ -84,4 +84,22 @@ tr:last-of-type td:last-of-type {
   margin-left: 60% !important;
   margin-top: 5px;
   margin-bottom: 10px;
+}
+.DeleteIcon {
+  color: red;
+  size: 4;
+}
+.UpdateIcon {
+  color: #060b26;
+}
+
+.UpdateIcon:hover,
+.DeleteIcon:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.DeleteIcon:hover {
+  color: red;
 }
