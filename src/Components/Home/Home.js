@@ -13,16 +13,17 @@ import AdminSidebar from "../Sidebar/AdminSidebar";
 import Patients from "../Patients/Patients";
 import Doctors from "../Doctors/Doctors";
 import Medicines from "../Medicines/Medicines";
+import PatientRequest from "../PatientRequest/PatientRequest";
+import PatientAppointments from "../PatientAppointments/PatientAppointments";
 
 const Home = () => {
-  var { loading, messageLogin, messageSignup, error, token, role } =
-    useSelector((store) => store.userReducer);
+  var { role } = useSelector((store) => store.userReducer);
   return (
     <div>
       {console.log(role)}
-      {role == "PATIENT" && <PatientSidebar />}
-      {role == "DOCTOR" && <DoctorSidebar />}
-      {role == "ADMIN" && <AdminSidebar />}
+      {role === "PATIENT" && <PatientSidebar />}
+      {role === "DOCTOR" && <DoctorSidebar />}
+      {role === "ADMIN" && <AdminSidebar />}
 
       <Routes>
         <Route path={"/dashboard"} element={<Dashboard />} />
@@ -30,6 +31,11 @@ const Home = () => {
         <Route path={"/medicinesAvailable"} element={<AvailableMedicines />} />
         <Route path={"/patientsConsulted"} element={<PatientsConsulted />} />
         <Route path={"/patientVisits"} element={<PatientVisits />} />
+        <Route path={"/requestAppointments"} element={<PatientRequest />} />
+        <Route
+          path={"/patientAppointments"}
+          element={<PatientAppointments />}
+        />
         <Route
           path={"/medicinesPrescribed"}
           element={<MedicinesPrescribed />}

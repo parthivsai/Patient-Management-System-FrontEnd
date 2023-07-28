@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import PatientRegister from "./PatientRegister";
 import { createPortal } from "react-dom";
 import DoctorRegister from "./DoctorRegister";

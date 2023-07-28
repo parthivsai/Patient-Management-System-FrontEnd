@@ -50,11 +50,6 @@
   transition: background-color 0.2s ease-in-out;
 }
 
-/* .nav-menu-items a:hover {
-    background-color: #060b26;
-    color: #f5f5f5;
-  } */
-
 .nav-menu-items {
   width: 130%;
   list-style: none;
@@ -98,9 +93,6 @@ ul:not(.navbar-toggle) {
   transition-duration: 0.3s;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
-/* .nav-menu-items:hover {
-    color: #060b26;
-  } */
 
 .cart-items {
   margin-left: 1rem;
@@ -112,7 +104,6 @@ ul:not(.navbar-toggle) {
 .arrow:hover {
   fill: #060b26;
   color: #060b26;
-  /* background-color: brown; */
 }
 .nav-menu-items a:hover {
   fill: #060b26 !important;

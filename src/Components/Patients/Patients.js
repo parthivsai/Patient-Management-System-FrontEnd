@@ -6,7 +6,6 @@ import { MdOutlineDelete } from "react-icons/md";
 import { createPortal } from "react-dom";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import AddPatient from "./AddPatient";
 
 import "./Patients.css";
 import UpdatePatient from "./UpdatePatient";
@@ -98,7 +97,6 @@ const Patients = () => {
               </tr>
             </thead>
             <tbody>
-              {console.log(pat)}
               {pat &&
                 pat.map((item) => (
                   <tr key={item.id}>
