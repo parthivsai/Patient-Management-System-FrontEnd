@@ -45,10 +45,7 @@
   margin-top: 2%;
   text-shadow: 5px 5px 15px 5px;
 }
-
-/* h3 i {
-    background-color: rgb(58, 58, 58);
-    color: white;
-    border-radius: 0px;
-    background-blend-mode: darken;
-  } */
+.removeMargins {
+  margin-left: 0px !important;
+  margin-top: auto !important;
+}

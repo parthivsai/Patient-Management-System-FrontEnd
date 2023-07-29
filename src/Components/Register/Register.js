@@ -24,7 +24,7 @@ const Register = () => {
           </div>
           <div className="dashboard-card-content">
             <div className="card-body text-center">
-              <i>Click here for doctor Registration</i>
+              <i>Click here to proceed with Doctor Registration</i>
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@ const Register = () => {
           <div className="dashboard-card-content">
             <div className="card-body text-center">
               {" "}
-              <i>Click here for patient Registration.</i>
+              <i>Click here to proceed with Patient Registration.</i>
             </div>
           </div>
         </div>
