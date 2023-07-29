@@ -71,9 +71,9 @@ const Login = () => {
                 </div>
                 <div className="col-lg-6">
                   <div className="card-body p-5 mx-4">
-                    <div className="text-center">
+                    <div>
                       <img className="imgstyle" src={pms} alt="logo"></img>
-                      <h4>Welcome to Patient Management Portal</h4>
+                      {/* <h5>Welcome to Patient Management Portal</h5> */}
                     </div>
 
                     <form>

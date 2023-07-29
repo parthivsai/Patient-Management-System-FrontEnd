@@ -17,6 +17,7 @@ import PatientRequest from "../PatientRequest/PatientRequest";
 import PatientAppointments from "../PatientAppointments/PatientAppointments";
 import ApprovalRequest from "../ApprovalRequest/ApprovalRequest";
 import UpcomingAppointments from "../UpcomingAppointments/UpcomingAppointments";
+import Visits from "../Visits/Visits";
 
 const Home = () => {
   var { role } = useSelector((store) => store.userReducer);
@@ -50,6 +51,7 @@ const Home = () => {
         <Route path="/patients" element={<Patients />} />
         <Route path="/doctors" element={<Doctors />} />
         <Route path="/medicines" element={<Medicines />} />
+        <Route path="/visits" element={<Visits />} />
 
         {/* <Route path={"/godowns"} element={<Godowns />} />
         <Route path={"/addGodown"} element={<AddGodown />} />

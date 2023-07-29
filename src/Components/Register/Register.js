@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import PatientRegister from "./PatientRegister";
 import { createPortal } from "react-dom";
 import DoctorRegister from "./DoctorRegister";
+import { BsFillPeopleFill } from "react-icons/bs";
+import { FaUserMd } from "react-icons/fa";
+
 import "./Register.css";
 
 const Register = () => {
@@ -10,17 +13,19 @@ const Register = () => {
 
   return (
     <>
-      <div className="card-box">
+      <div className="card-box register">
         <div
           className="dashboard-card-container doctor"
           onClick={() => setShowDoctorRegister(true)}
         >
           <div className="dashboard-card-title text-center">
-            <h3>Doctor</h3>
+            <FaUserMd size={150} />
             <hr />
           </div>
           <div className="dashboard-card-content">
-            <div className="card-body">Click here for doctor Registration</div>
+            <div className="card-body text-center">
+              <i>Click here for doctor Registration</i>
+            </div>
           </div>
         </div>
         <div className="portaldiv">
@@ -36,12 +41,13 @@ const Register = () => {
           onClick={() => setShowPatientRegister(true)}
         >
           <div className="dashboard-card-title text-center">
-            <h3>Patient</h3>
+            <BsFillPeopleFill size={150} />
             <hr />
           </div>
           <div className="dashboard-card-content">
-            <div className="card-body">
-              Click here for patient Registration.
+            <div className="card-body text-center">
+              {" "}
+              <i>Click here for patient Registration.</i>
             </div>
           </div>
         </div>

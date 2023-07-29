@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import "../Register/modal.css";
 
 const AppointmentRequest = (props) => {
   const [symptoms, setSymptoms] = useState("");
@@ -71,7 +72,7 @@ const AppointmentRequest = (props) => {
         </div>
         <div className="card-body">
           <div>
-            <label>Symptoms description:</label>
+            <label>Symptoms:</label>
             <input
               type="text"
               name=""
@@ -82,16 +83,22 @@ const AppointmentRequest = (props) => {
               }}
             />
           </div>
-          <div>
-            <select onClick={(event) => setDay(event.target.value)}>
+          <div className="select">
+            <select
+              className="select"
+              onClick={(event) => setDay(event.target.value)}
+            >
               <option value="">Select a day</option>
               {days.map((item) => (
                 <option value={item}>{item}</option>
               ))}
             </select>
           </div>
-          <div>
-            <select onClick={(event) => setTimeSlot(event.target.value)}>
+          <div className="select">
+            <select
+              className="select"
+              onClick={(event) => setTimeSlot(event.target.value)}
+            >
               <option value="">Select a TimeSlot</option>
               {slots.map((item) => (
                 <option value={item}>{item}</option>

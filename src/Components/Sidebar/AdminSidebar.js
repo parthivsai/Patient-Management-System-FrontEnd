@@ -1,6 +1,7 @@
 import React from "react";
-import { FaBars, FaUserMd } from "react-icons/fa";
+import { FaBars, FaUserMd, FaHospitalUser } from "react-icons/fa";
 import { IoArrowBackCircleOutline } from "react-icons/io5";
+import { IoMdAnalytics } from "react-icons/io";
 import { BsFillPeopleFill } from "react-icons/bs";
 import { AiFillMedicineBox } from "react-icons/ai";
 import { Link, Outlet } from "react-router-dom";
@@ -26,7 +27,7 @@ const AdminSidebar = () => {
       path: "/home/dashboard",
       title: "Dashboard",
       name: "Statistic details",
-      icon: <FaUserMd />,
+      icon: <IoMdAnalytics />,
     },
     {
       path: "/home/patients",
@@ -45,6 +46,12 @@ const AdminSidebar = () => {
       title: "Doctors",
       name: "Doctors",
       icon: <FaUserMd />,
+    },
+    {
+      path: "/home/visits",
+      title: "Visits",
+      name: "Visit",
+      icon: <FaHospitalUser />,
     },
   ];
 
