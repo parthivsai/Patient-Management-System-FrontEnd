@@ -23,7 +23,7 @@ const PatientRequest = () => {
       {console.log(userDetails)}
       <div className="Patient-Container">
         <div>
-          <h1 className="text-center">Doctors Available</h1>
+          <h1 className="text-center">Request Appointment</h1>
           {/* <label className="searchLabel">Search</label>
         <input
           className="form-control searchFilter"
@@ -49,7 +49,7 @@ const PatientRequest = () => {
               <tr>
                 <th>Doctor Name</th>
                 <th>Specialization</th>
-                <th>Actions</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -59,14 +59,16 @@ const PatientRequest = () => {
                     <td>{item.name}</td>
                     <td>{item.specialization}</td>
                     <td>
-                      <FcApproval
+                      <button
+                        className="btn btn-dark"
                         onClick={() => {
                           setPatientId(userDetails.id);
                           setDoctorId(item.id);
                           setShowRequestAppointment(true);
                         }}
-                        className="UpdateIcon mx-2"
-                      />
+                      >
+                        Request
+                      </button>
                     </td>
                   </tr>
                 ))}

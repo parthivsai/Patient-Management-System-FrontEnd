@@ -6,13 +6,28 @@ import { toast } from "react-hot-toast";
 const AppointmentRequest = (props) => {
   const [symptoms, setSymptoms] = useState("");
   const [timeSlot, setTimeSlot] = useState("");
+  const [day, setDay] = useState("");
 
   const slots = ["10-11", "11-12", "2-3", "3-4"];
+  const days = ["Tomorrow", "DayAfterTomorrow"];
 
   const handleSave = () => {
+    console.log(day, timeSlot);
+    if (day.length <= 0 || timeSlot.length <= 0) {
+      toast.error("Invalid Request! Fill in the Details", {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
+      props.onClose();
+      return;
+    }
     let requestData = {
       request: symptoms,
       timeSlot: timeSlot,
+      day: day,
     };
     try {
       axios.post(
@@ -68,7 +83,16 @@ const AppointmentRequest = (props) => {
             />
           </div>
           <div>
+            <select onClick={(event) => setDay(event.target.value)}>
+              <option value="">Select a day</option>
+              {days.map((item) => (
+                <option value={item}>{item}</option>
+              ))}
+            </select>
+          </div>
+          <div>
             <select onClick={(event) => setTimeSlot(event.target.value)}>
+              <option value="">Select a TimeSlot</option>
               {slots.map((item) => (
                 <option value={item}>{item}</option>
               ))}

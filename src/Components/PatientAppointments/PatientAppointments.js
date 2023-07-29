@@ -32,17 +32,19 @@ const PatientAppointments = () => {
               <tr>
                 <th>Doctor Name</th>
                 <th>description</th>
+                <th>Day</th>
                 <th>Requested Slot</th>
                 <th>status</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="scrollable">
               {console.log(pendingRequests)}
               {pendingRequests &&
                 pendingRequests.map((item) => (
                   <tr key={item.id}>
                     <td>{item.doctor.name}</td>
                     <td>{item.request}</td>
+                    <td>{item.day}</td>
                     <td>{item.timeSlot}</td>
                     <td>{item.approvalStatus}</td>
                   </tr>
@@ -57,17 +59,19 @@ const PatientAppointments = () => {
               <tr>
                 <th>Doctor Name</th>
                 <th>description</th>
+                <th>Day</th>
                 <th>Requested Slot</th>
                 <th>status</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody className="scrollable">
               {console.log(approvedRequests)}
               {approvedRequests &&
                 approvedRequests.map((item) => (
                   <tr key={item.id}>
                     <td>{item.doctor.name}</td>
                     <td>{item.request}</td>
+                    <td>{item.day}</td>
                     <td>{item.timeSlot}</td>
                     <td>{item.approvalStatus}</td>
                   </tr>
@@ -82,6 +86,7 @@ const PatientAppointments = () => {
               <tr>
                 <th>Doctor Name</th>
                 <th>description</th>
+                <th>Day</th>
                 <th>Requested Slot</th>
                 <th>status</th>
               </tr>
@@ -93,6 +98,7 @@ const PatientAppointments = () => {
                   <tr key={item.id}>
                     <td>{item.doctor.name}</td>
                     <td>{item.request}</td>
+                    <td>{item.day}</td>
                     <td>{item.timeSlot}</td>
                     <td>{item.approvalStatus}</td>
                   </tr>

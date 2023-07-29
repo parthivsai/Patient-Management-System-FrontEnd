@@ -1,0 +1,18 @@
+.AcceptedIcon {
+  color: rgb(94, 255, 0);
+  size: 4;
+}
+.RejectedIcon {
+  color: rgb(1, 1, 1);
+}
+
+.AcceptedIcon:hover,
+.RejectedIcon:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.RejectedIcon:hover {
+  color: red;
+}
