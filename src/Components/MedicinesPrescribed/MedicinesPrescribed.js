@@ -60,7 +60,7 @@ const MedicinesPrescribed = () => {
             <thead>
               <tr>
                 <th>Medicine Name</th>
-                <th>Medicine Price</th>
+                <th>Medicine Price (Rupees)</th>
                 <th>ExpiryDate</th>
                 <th>Given By</th>
               </tr>

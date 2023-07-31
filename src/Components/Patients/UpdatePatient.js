@@ -4,8 +4,10 @@ import { useState } from "react";
 import "./UpdatePatient.css";
 import { Axios } from "axios";
 import { toast } from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const UpdatePatient = (props) => {
+  const { token } = useSelector((store) => store.userReducer);
   const data = ["Apple", "Apples", "Band", "Bands"];
   const [patient, setPatient] = useState([]);
   const [name, setName] = useState("");
@@ -40,7 +42,13 @@ const UpdatePatient = (props) => {
     try {
       await axios.put(
         `http://localhost:2121/patient/update/${props.patientId}`,
-        newPatient
+        newPatient,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
       toast.success("Succesfully updated the Patient Details!", {
         style: {

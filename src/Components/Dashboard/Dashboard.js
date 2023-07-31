@@ -7,7 +7,7 @@ import "./Dashboard.css";
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  var { username, role } = useSelector((store) => store.userReducer);
+  var { username, role, token } = useSelector((store) => store.userReducer);
   const [patientCount, setPatientCount] = useState("");
   const [doctorCount, setDoctorCount] = useState("");
   const [medicineCount, setMedicineCount] = useState("");
@@ -20,6 +20,7 @@ const Dashboard = () => {
   }, [role]);
 
   useEffect(() => {
+    console.log(token);
     fetch("http://localhost:2121/patient/getAll")
       .then((response) => response.json())
       .then((data) => setPatientCount(data.length));
@@ -80,7 +81,7 @@ const Dashboard = () => {
                 </i>{" "}
                 doctors available right now!! and we have around{" "}
                 <i>
-                  <b>{doctorCount}</b>
+                  <b>{medicineCount}</b>
                 </i>{" "}
                 medicines readily available in our Store.
               </p>

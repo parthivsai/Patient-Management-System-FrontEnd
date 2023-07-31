@@ -22,6 +22,7 @@ const Login = () => {
     event.preventDefault();
     dispatch(userLogin({ username, password }));
     if (token != null) {
+      console.log(token);
       if (role.length > 1 && role === "ADMIN") {
         navigate("/home/dashboard");
       } else if (role.length > 1) {

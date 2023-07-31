@@ -3,12 +3,15 @@ import axios from "axios";
 import { useState } from "react";
 import { Axios } from "axios";
 import { toast } from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const UpdateDoctor = (props) => {
   const [doctor, setDoctor] = useState([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState();
   const [specialization, setSpecialization] = useState("");
+
+  const { token, role } = useSelector((store) => store.userReducer);
 
   useEffect(() => {
     fetch(`http://localhost:2121/doctor/get/${props.doctorId}`)
@@ -34,9 +37,16 @@ const UpdateDoctor = (props) => {
     };
 
     try {
+      console.log(token, role);
       await axios.put(
         `http://localhost:2121/doctor/update/${props.doctorId}`,
-        newDoctor
+        newDoctor,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
       toast.success("Succesfully updated the Doctor Details!", {
         style: {

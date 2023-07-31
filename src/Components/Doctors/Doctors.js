@@ -14,7 +14,7 @@ const Doctors = () => {
   const [doctorId, setDoctorId] = useState();
   const [showUpdateDoctor, setShowUpdateDoctor] = useState(false);
 
-  var { userDetails, role } = useSelector((store) => store.userReducer);
+  var { token, role } = useSelector((store) => store.userReducer);
   //   var docId = userDetails.id;
   //   var username = userDetails.user.username;
   //   var password = userDetails.user.password;
@@ -62,7 +62,12 @@ const Doctors = () => {
     try {
       var lst = doctor.filter((ele) => ele.id != item.id);
       setDoctor(lst);
-      await axios.delete(`http://localhost:2121/doctor/delete/${item.id}`);
+      await axios.delete(`http://localhost:2121/doctor/delete/${item.id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
       toast.success("Succesfully Deleted the Doctor", {
         style: {
           borderRadius: "10px",
