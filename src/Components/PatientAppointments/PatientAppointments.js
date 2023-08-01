@@ -31,10 +31,10 @@ const PatientAppointments = () => {
             <thead>
               <tr>
                 <th>Doctor Name</th>
-                <th>description</th>
-                <th>Day</th>
+                <th>Description</th>
+                <th>Date</th>
                 <th>Requested Slot</th>
-                <th>status</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody className="scrollable">
@@ -58,10 +58,10 @@ const PatientAppointments = () => {
             <thead>
               <tr>
                 <th>Doctor Name</th>
-                <th>description</th>
-                <th>Day</th>
+                <th>Description</th>
+                <th>Date</th>
                 <th>Requested Slot</th>
-                <th>status</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody className="scrollable">
@@ -85,10 +85,10 @@ const PatientAppointments = () => {
             <thead>
               <tr>
                 <th>Doctor Name</th>
-                <th>description</th>
-                <th>Day</th>
+                <th>Description</th>
+                <th>Date</th>
                 <th>Requested Slot</th>
-                <th>status</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>

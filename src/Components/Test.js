@@ -16,7 +16,7 @@ const Test = () => {
     }
   }, []);
 
-  return <div>Text {s}</div>;
+  return <div>Its working {s}</div>;
 };
 
 export default Test;

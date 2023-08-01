@@ -21,10 +21,10 @@ const UpcomingAppointments = () => {
             <thead>
               <tr>
                 <th>Patient Name</th>
-                <th>description</th>
-                <th>Day</th>
+                <th>Description</th>
+                <th>Date</th>
                 <th>Requested Slot</th>
-                <th>status</th>
+                <th>Status</th>
               </tr>
             </thead>
             <tbody>

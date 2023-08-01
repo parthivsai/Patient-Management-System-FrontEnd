@@ -1,5 +1,5 @@
 import axios from "axios";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import "../Register/modal.css";
@@ -7,14 +7,24 @@ import "../Register/modal.css";
 const AppointmentRequest = (props) => {
   const [symptoms, setSymptoms] = useState("");
   const [timeSlot, setTimeSlot] = useState("");
-  const [day, setDay] = useState("");
+  // const [day, setDay] = useState("");
 
-  const slots = ["10-11", "11-12", "2-3", "3-4"];
-  const days = ["Tomorrow", "DayAfterTomorrow"];
+  const slots = ["10AM - 11AM", "11AM - 12PM", "2PM - 3PM", "3PM - 4PM"];
+  // const days = ["Tomorrow", "DayAfterTomorrow"];
+
+  const [minDate, setMinDate] = useState("");
+  const [selectedDate, setSelectedDate] = useState("");
+
+  useEffect(() => {
+    const today = new Date();
+    today.setDate(today.getDate() + 1);
+    const tomorrow = today.toISOString().split("T")[0];
+    setMinDate(tomorrow);
+  }, []);
 
   const handleSave = () => {
-    console.log(day, timeSlot);
-    if (day.length <= 0 || timeSlot.length <= 0) {
+    // console.log(day, timeSlot);
+    if (selectedDate === "" || timeSlot.length <= 0) {
       toast.error("Invalid Request! Fill in the Details", {
         style: {
           borderRadius: "10px",
@@ -28,7 +38,7 @@ const AppointmentRequest = (props) => {
     let requestData = {
       request: symptoms,
       timeSlot: timeSlot,
-      day: day,
+      day: selectedDate,
     };
     try {
       axios.post(
@@ -83,7 +93,17 @@ const AppointmentRequest = (props) => {
               }}
             />
           </div>
-          <div className="select">
+          <div>
+            <label>Select a date:</label>
+            <input
+              type="date"
+              id="dateInput"
+              min={minDate}
+              value={selectedDate}
+              onChange={(event) => setSelectedDate(event.target.value)}
+            />
+          </div>
+          {/* <div className="select">
             <select
               className="select"
               onClick={(event) => setDay(event.target.value)}
@@ -93,7 +113,7 @@ const AppointmentRequest = (props) => {
                 <option value={item}>{item}</option>
               ))}
             </select>
-          </div>
+          </div> */}
           <div className="select">
             <select
               className="select"
