@@ -62,6 +62,7 @@ const PatientsConsulted = () => {
                 <th>Name</th>
                 <th>Disease</th>
                 <th>Medicine Name</th>
+                <th>Dosage Mentioned</th>
                 <th>Date</th>
               </tr>
             </thead>
@@ -72,6 +73,7 @@ const PatientsConsulted = () => {
                     <td>{item.patient.name}</td>
                     <td>{item.disease}</td>
                     <td>{item.medicine.name}</td>
+                    <td>{item.prescription}</td>
                     <td>{item.date}</td>
                   </tr>
                 ))}

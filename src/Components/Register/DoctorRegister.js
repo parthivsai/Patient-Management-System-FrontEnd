@@ -29,13 +29,13 @@ const DoctorRegister = (props) => {
       );
       const user = response.data;
       handleAddDoctor(user);
-      toast.success("Succesfully Added User!", {
-        style: {
-          borderRadius: "10px",
-          background: "#333",
-          color: "#fff",
-        },
-      });
+      // toast.success("Succesfully Added User!", {
+      //   style: {
+      //     borderRadius: "10px",
+      //     background: "#333",
+      //     color: "#fff",
+      //   },
+      // });
     } catch (err) {
       console.log(err.response);
       toast.error("Failed to Add user", {
@@ -62,7 +62,7 @@ const DoctorRegister = (props) => {
           `http://localhost:2121/doctor/add/${user.id}`,
           newPatient
         );
-        toast.success("Succesfully added the Doctor!", {
+        toast.success("Succesfully added Doctor!", {
           style: {
             borderRadius: "10px",
             background: "#333",

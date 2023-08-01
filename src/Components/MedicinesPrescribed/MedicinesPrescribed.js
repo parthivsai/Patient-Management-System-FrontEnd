@@ -62,6 +62,7 @@ const MedicinesPrescribed = () => {
                 <th>Medicine Name</th>
                 <th>Medicine Price (Rupees)</th>
                 <th>ExpiryDate</th>
+                <th>Dosage</th>
                 <th>Given By</th>
               </tr>
             </thead>
@@ -72,6 +73,7 @@ const MedicinesPrescribed = () => {
                     <td>{item.medicine.name}</td>
                     <td>{item.medicine.price}</td>
                     <td>{item.medicine.expiryDate}</td>
+                    <td>{item.prescription}</td>
                     <td>{item.doctor.name}</td>
                   </tr>
                 ))}

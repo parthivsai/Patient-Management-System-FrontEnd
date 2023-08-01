@@ -1,10 +1,16 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { createPortal } from "react-dom";
+import PrescribePatient from "./PrescribePatient";
 
 const UpcomingAppointments = () => {
   const { userDetails } = useSelector((store) => store.userReducer);
   const [upcomingAppointments, setUpcomingAppointments] = useState();
+  const [showPrescriptionForm, setShowPrescriptionForm] = useState(false);
+  const [patientId, setPatientId] = useState("");
+  const [doctorId, setDoctorId] = useState("");
+  const [getDate, setGetDate] = useState("");
 
   useEffect(() => {
     fetch(`http://localhost:2121/status/getByDoc/approved/${userDetails.id}`)
@@ -16,6 +22,16 @@ const UpcomingAppointments = () => {
     <>
       <div>
         <h3 className="text-center">Upcoming Appointments</h3>
+        {showPrescriptionForm &&
+          createPortal(
+            <PrescribePatient
+              date={getDate}
+              doctorId={doctorId}
+              patientId={patientId}
+              onClose={() => setShowPrescriptionForm(false)}
+            />,
+            document.getElementById("root")
+          )}
         <div className="tableContainer">
           <table>
             <thead>
@@ -25,6 +41,7 @@ const UpcomingAppointments = () => {
                 <th>Date</th>
                 <th>Requested Slot</th>
                 <th>Status</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
@@ -37,6 +54,19 @@ const UpcomingAppointments = () => {
                     <td>{item.day}</td>
                     <td>{item.timeSlot}</td>
                     <td>{item.approvalStatus}</td>
+                    <td>
+                      <button
+                        className="btn btn-dark"
+                        onClick={() => {
+                          setPatientId(item.patient.id);
+                          setDoctorId(userDetails.id);
+                          setShowPrescriptionForm(true);
+                          setGetDate(item.day);
+                        }}
+                      >
+                        Prescribe
+                      </button>
+                    </td>
                   </tr>
                 ))}
             </tbody>
