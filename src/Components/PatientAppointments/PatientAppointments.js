@@ -39,6 +39,7 @@ const PatientAppointments = () => {
             </thead>
             <tbody className="scrollable">
               {console.log(pendingRequests)}
+              {/* {pendingRequests.length === 0 && <h3>No Records Found</h3>} */}
               {pendingRequests &&
                 pendingRequests.map((item) => (
                   <tr key={item.id}>

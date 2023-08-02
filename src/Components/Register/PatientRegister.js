@@ -119,7 +119,7 @@ const PatientRegister = (props) => {
           <div>
             <label>Age:</label>
             <input
-              type="text"
+              type="number"
               name=""
               placeholder=""
               value={age}
