@@ -68,7 +68,7 @@ const Visits = () => {
                 <th>Patient Name</th>
                 <th>Consulted</th>
                 <th>Disease</th>
-                <th>Prescription</th>
+                <th>Medicine Given</th>
               </tr>
             </thead>
             <tbody>

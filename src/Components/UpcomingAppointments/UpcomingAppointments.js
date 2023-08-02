@@ -6,7 +6,7 @@ import PrescribePatient from "./PrescribePatient";
 
 const UpcomingAppointments = () => {
   const { userDetails } = useSelector((store) => store.userReducer);
-  const [upcomingAppointments, setUpcomingAppointments] = useState();
+  const [upcomingAppointments, setUpcomingAppointments] = useState([]);
   const [showPrescriptionForm, setShowPrescriptionForm] = useState(false);
   const [patientId, setPatientId] = useState("");
   const [doctorId, setDoctorId] = useState("");
