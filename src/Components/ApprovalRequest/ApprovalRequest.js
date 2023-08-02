@@ -89,7 +89,7 @@ const ApprovalRequest = () => {
               </tr>
             </thead>
             <tbody>
-              {console.log(pendingApprovals)}
+              {pendingApprovals.length === 0 && <h5>No Records Found</h5>}
               {pendingApprovals &&
                 pendingApprovals.map((item) => (
                   <tr key={item.id}>

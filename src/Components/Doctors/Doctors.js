@@ -127,6 +127,7 @@ const Doctors = () => {
               </tr>
             </thead>
             <tbody>
+              {doctor.length === 0 && <h5>No Records Found</h5>}
               {doctor &&
                 doctor.map((item) => (
                   <tr key={item.id}>

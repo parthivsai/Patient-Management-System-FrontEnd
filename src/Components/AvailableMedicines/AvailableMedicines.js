@@ -66,6 +66,7 @@ const AvailableMedicines = () => {
               </tr>
             </thead>
             <tbody>
+              {filteredMedicines.length === 0 && <h5>No Records Found</h5>}
               {filteredMedicines &&
                 filteredMedicines.map((item) => (
                   <tr key={item.id}>

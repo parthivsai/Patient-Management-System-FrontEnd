@@ -67,6 +67,9 @@ const PatientsConsulted = () => {
               </tr>
             </thead>
             <tbody>
+              {filteredTreatedPatients.length === 0 && (
+                <h5>No Records Found</h5>
+              )}
               {filteredTreatedPatients &&
                 filteredTreatedPatients.map((item) => (
                   <tr key={item.id}>

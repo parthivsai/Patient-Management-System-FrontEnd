@@ -46,6 +46,7 @@ const UpcomingAppointments = () => {
             </thead>
             <tbody>
               {console.log(upcomingAppointments)}
+              {upcomingAppointments.length === 0 && <h5>No Records Found</h5>}
               {upcomingAppointments &&
                 upcomingAppointments.map((item) => (
                   <tr key={item.id}>

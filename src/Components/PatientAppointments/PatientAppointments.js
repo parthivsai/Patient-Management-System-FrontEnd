@@ -38,8 +38,7 @@ const PatientAppointments = () => {
               </tr>
             </thead>
             <tbody className="scrollable">
-              {console.log(pendingRequests)}
-              {/* {pendingRequests.length === 0 && <h3>No Records Found</h3>} */}
+              {pendingRequests.length === 0 && <h5>No Records Found</h5>}
               {pendingRequests &&
                 pendingRequests.map((item) => (
                   <tr key={item.id}>
@@ -66,7 +65,7 @@ const PatientAppointments = () => {
               </tr>
             </thead>
             <tbody className="scrollable">
-              {console.log(approvedRequests)}
+              {approvedRequests.length === 0 && <h5>No Records Found</h5>}
               {approvedRequests &&
                 approvedRequests.map((item) => (
                   <tr key={item.id}>
@@ -93,7 +92,7 @@ const PatientAppointments = () => {
               </tr>
             </thead>
             <tbody>
-              {console.log(rejectedRequests)}
+              {rejectedRequests.length === 0 && <h5>No Records Found</h5>}
               {rejectedRequests &&
                 rejectedRequests.map((item) => (
                   <tr key={item.id}>
