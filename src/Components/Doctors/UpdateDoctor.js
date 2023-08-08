@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
-import { Axios } from "axios";
 import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const UpdateDoctor = (props) => {
   const [doctor, setDoctor] = useState([]);
@@ -12,6 +12,13 @@ const UpdateDoctor = (props) => {
   const [specialization, setSpecialization] = useState("");
 
   const { token, role } = useSelector((store) => store.userReducer);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (role.length < 1) {
+      navigate("/login");
+    }
+  }, []);
 
   useEffect(() => {
     fetch(`http://localhost:2121/doctor/get/${props.doctorId}`)

@@ -1,29 +1,43 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { AiOutlineEdit } from "react-icons/ai";
-import { MdOutlineDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const PatientVisits = () => {
   const [patientVisits, setPatientVisits] = useState([]);
   const [filteredVisits, setFilteredVisits] = useState([]);
 
   var { userDetails, role } = useSelector((store) => store.userReducer);
-  var patId = userDetails.id;
-  var username = userDetails.user.username;
-  var password = userDetails.user.password;
+  if (role) {
+    var patId = userDetails.id;
+    var username = userDetails.user.username;
+    var password = userDetails.user.password;
+  }
 
   const basicAuthHeader = "Basic " + btoa(username + ":" + password);
+
+  var { role } = useSelector((store) => store.userReducer);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    console.log("Coming in here and role is : " + role);
+    if (role.length < 1) {
+      navigate("/login");
+      return;
+    }
+  }, []);
 
   useEffect(() => {
     console.log(patId);
     console.log(username, password);
-    fetch(`http://localhost:2121/visits/getByPat/${patId}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setPatientVisits(data);
-        setFilteredVisits(data);
-      });
+    if (role) {
+      fetch(`http://localhost:2121/visits/getByPat/${patId}`)
+        .then((response) => response.json())
+        .then((data) => {
+          setPatientVisits(data);
+          setFilteredVisits(data);
+        });
+    }
   }, []);
 
   const handleFilterChange = (event) => {

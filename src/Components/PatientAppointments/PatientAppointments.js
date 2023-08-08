@@ -2,11 +2,20 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import "./PatientAppointments.css";
+import { useNavigate } from "react-router-dom";
 const PatientAppointments = () => {
   const [pendingRequests, setPendingRequests] = useState([]);
   const [approvedRequests, setApprovedRequests] = useState([]);
   const [rejectedRequests, setRejectedRequests] = useState([]);
-  const { userDetails } = useSelector((store) => store.userReducer);
+
+  const { userDetails, role } = useSelector((store) => store.userReducer);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (role.length < 1) {
+      navigate("/login");
+    }
+  }, []);
 
   useEffect(() => {
     fetch(`http://localhost:2121/status/getByPat/pending/${userDetails.id}`)

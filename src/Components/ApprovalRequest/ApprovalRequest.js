@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { TiTick } from "react-icons/ti";
 import { RxCross2 } from "react-icons/rx";
 import { toast } from "react-hot-toast";
@@ -10,8 +11,22 @@ const ApprovalRequest = () => {
   const { userDetails } = useSelector((store) => store.userReducer);
   const [pendingApprovals, setPendingApprovals] = useState([]);
 
+  var { role } = useSelector((store) => store.userReducer);
+  const navigate = useNavigate();
+
+  if (role) {
+    var docId = userDetails.id;
+  }
+
   useEffect(() => {
-    fetch(`http://localhost:2121/status/getByDoc/pending/${userDetails.id}`)
+    if (role.length < 1) {
+      navigate("/login");
+      return;
+    }
+  }, []);
+
+  useEffect(() => {
+    fetch(`http://localhost:2121/status/getByDoc/pending/${docId}`)
       .then((response) => response.json())
       .then((data) => setPendingApprovals(data));
   }, []);

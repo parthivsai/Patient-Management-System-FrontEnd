@@ -6,6 +6,7 @@ import UpdateMedicine from "./UpdateMedicine";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { createPortal } from "react-dom";
+import { useNavigate } from "react-router-dom";
 
 const Medicines = () => {
   const [medicines, setMedicines] = useState([]);
@@ -14,6 +15,12 @@ const Medicines = () => {
   const [showUpdateMedicine, setShowUpdateMedicine] = useState(false);
 
   var { role } = useSelector((store) => store.userReducer);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (role.length < 1) {
+      navigate("/login");
+    }
+  }, []);
 
   useEffect(() => {
     fetch("http://localhost:2121/medicine/getAll")
@@ -25,8 +32,6 @@ const Medicines = () => {
   }, []);
 
   useEffect(() => {
-    // console.log(docId);
-    // console.log(username, password);
     fetch("http://localhost:2121/medicine/getAll")
       .then((response) => response.json())
       .then((data) => {
@@ -62,7 +67,6 @@ const Medicines = () => {
 
   const handleFilterChange = (event) => {
     console.log(medicines);
-    // setFiltervalue(event.target.value);
 
     if (event.target.value.length === 0) {
       setFilteredMedicines([...medicines]);
@@ -98,12 +102,6 @@ const Medicines = () => {
             createPortal(
               <UpdateMedicine
                 medicineId={medicineId}
-                //   handleSave={handleSave}
-                //   focusLength={focusLength}
-                //   shortLength={shortLength}
-                //   longLength={longLength}
-                //   autoBreak={autoBreak}
-                //   autoPomo={autoPomo}
                 onClose={() => setShowUpdateMedicine(false)}
               />,
               document.getElementById("root")

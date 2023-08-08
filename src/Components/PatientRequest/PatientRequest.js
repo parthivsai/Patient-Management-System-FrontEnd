@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import AppointmentRequest from "../AppointmentRequest/AppointmentRequest";
+import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { createPortal } from "react-dom";
-import { FcApproval } from "react-icons/fc";
 
 const PatientRequest = () => {
   const { userDetails } = useSelector((store) => store.userReducer);
@@ -11,6 +11,14 @@ const PatientRequest = () => {
   const [showRequestAppointment, setShowRequestAppointment] = useState(false);
 
   const [docs, setDocs] = useState([]);
+
+  var { role } = useSelector((store) => store.userReducer);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (role.length < 1) {
+      navigate("/login");
+    }
+  }, []);
 
   useEffect(() => {
     fetch("http://localhost:2121/doctor/getAll")
@@ -24,13 +32,6 @@ const PatientRequest = () => {
       <div className="Patient-Container">
         <div>
           <h1 className="text-center">Request Appointment</h1>
-          {/* <label className="searchLabel">Search</label>
-        <input
-          className="form-control searchFilter"
-          type="text"
-          placeholder="Search.."
-          onChange={handleFilterChange}
-        /> */}
         </div>
         <div className="portaldiv">
           {showRequestAppointment &&

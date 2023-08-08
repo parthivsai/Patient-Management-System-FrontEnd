@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import axios from "axios";
 
 const PrescribePatient = (props) => {
@@ -8,6 +10,14 @@ const PrescribePatient = (props) => {
   const [medicines, setMedicines] = useState([]);
   const [selectedMedicine, setSelectedMedicine] = useState("");
 
+  var { role } = useSelector((store) => store.userReducer);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (role.length < 1) {
+      navigate("/login");
+    }
+  }, []);
+
   useEffect(() => {
     fetch("http://localhost:2121/medicine/getAll")
       .then((response) => response.json())
@@ -15,7 +25,6 @@ const PrescribePatient = (props) => {
   }, []);
 
   const handleSave = () => {
-    // console.log(day, timeSlot);
     console.log(selectedMedicine);
     if (prescription === "" || selectedMedicine === "") {
       toast.error("Invalid Request! Fill in the Details", {

@@ -30,13 +30,6 @@ const PatientRegister = (props) => {
       );
       const user = response.data;
       handleAddPatient(user);
-      // toast.success("Succesfully Added User!", {
-      //   style: {
-      //     borderRadius: "10px",
-      //     background: "#333",
-      //     color: "#fff",
-      //   },
-      // });
     } catch (err) {
       console.log(err.response);
       toast.error("Failed to Add user", {

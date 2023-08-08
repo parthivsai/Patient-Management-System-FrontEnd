@@ -6,57 +6,38 @@ import { MdOutlineDelete } from "react-icons/md";
 import UpdateDoctor from "./UpdateDoctor";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { createPortal } from "react-dom";
 
 const Doctors = () => {
   const [doctor, setDoctor] = useState([]);
-  const [doc, setDoc] = useState([]);
   const [doctorId, setDoctorId] = useState();
   const [showUpdateDoctor, setShowUpdateDoctor] = useState(false);
 
   var { token, role } = useSelector((store) => store.userReducer);
-  //   var docId = userDetails.id;
-  //   var username = userDetails.user.username;
-  //   var password = userDetails.user.password;
 
-  //   const basicAuthHeader = "Basic " + btoa(username + ":" + password);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (role.length < 1) {
+      navigate("/login");
+    }
+  }, []);
 
   useEffect(() => {
-    // console.log(docId);
-    // console.log(username, password);
     fetch("http://localhost:2121/doctor/getAll")
       .then((response) => response.json())
       .then((data) => {
         setDoctor(data);
-        // setFilteredPatients(data);
       });
   }, []);
 
   useEffect(() => {
-    // console.log(docId);
-    // console.log(username, password);
     fetch("http://localhost:2121/doctor/getAll")
       .then((response) => response.json())
       .then((data) => {
         setDoctor(data);
       });
   }, [showUpdateDoctor]);
-
-  //   const handleFilterChange = (event) => {
-  //     if (event.target.value.length === 0) {
-  //       setFilteredPatients([...patients]);
-  //     } else if (event.target.value.length > 0) {
-  //       var updatedList = [...patients];
-  //       console.log(updatedList, event.target.value);
-
-  //       updatedList = patients.filter((item) => {
-  //         return item.name
-  //           .toLowerCase()
-  //           .includes(event.target.value.toLowerCase());
-  //       });
-  //       setFilteredPatients(updatedList);
-  //     }
-  //   };
 
   const handleDelete = async (item) => {
     try {
@@ -92,24 +73,11 @@ const Doctors = () => {
       <div>
         <div>
           <h1 className="text-center">Doctors</h1>
-          {/* <label className="searchLabel">Search</label>
-          <input
-            className="form-control searchFilter"
-            type="text"
-            placeholder="Search.."
-            onChange={handleFilterChange}
-          /> */}
           <div className="portaldiv">
             {showUpdateDoctor &&
               createPortal(
                 <UpdateDoctor
                   doctorId={doctorId}
-                  //   handleSave={handleSave}
-                  //   focusLength={focusLength}
-                  //   shortLength={shortLength}
-                  //   longLength={longLength}
-                  //   autoBreak={autoBreak}
-                  //   autoPomo={autoPomo}
                   onClose={() => setShowUpdateDoctor(false)}
                 />,
                 document.getElementById("root")

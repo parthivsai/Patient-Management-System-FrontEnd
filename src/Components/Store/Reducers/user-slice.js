@@ -51,28 +51,6 @@ export const userLogin = createAsyncThunk(
   }
 );
 
-// export const userRegister = createAsyncThunk(
-//   "users/register",
-//   async ({ name, email, password }) => {
-//     let user = {
-//       username: name,
-//       email: email,
-//       password: password,
-//     };
-//     const response = await axios.post(
-//       "http://localhost:3000/api/stock/UserDetails",
-//       user,
-//       {
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//       }
-//     );
-//     const data = await response.data;
-//     return data;
-//   }
-// );
-
 const userSlice = createSlice({
   name: "users",
   initialState,
@@ -108,21 +86,6 @@ const userSlice = createSlice({
       state.loading = false;
       state.error = action.error.message;
     });
-
-    // builder.addCase(userRegister.pending, (state, action) => {
-    //   state.loading = true;
-    // });
-    // builder.addCase(userRegister.fulfilled, (state, action) => {
-    //   state.loading = false;
-    //   state.messageSignup = "Successfully Registered";
-    //   state.userEmail = action.payload.email;
-    //   // state.token = v4();
-    // });
-    // builder.addCase(userRegister.rejected, (state, action) => {
-    //   state.loading = false;
-    //   state.messageSignup = "Something went wrong. Try again!";
-    //   state.error = action.error.message;
-    // });
   },
 });
 

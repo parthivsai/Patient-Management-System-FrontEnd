@@ -1,15 +1,23 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
-import { Axios } from "axios";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const UpdateMedicine = (props) => {
-  const data = ["Apple", "Apples", "Band", "Bands"];
   const [medicine, setMedicine] = useState([]);
   const [name, setName] = useState("");
   const [price, setPrice] = useState();
   const [stock, setStock] = useState("");
+
+  var { role } = useSelector((store) => store.userReducer);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (role.length < 1) {
+      navigate("/login");
+    }
+  }, []);
 
   useEffect(() => {
     fetch(`http://localhost:2121/medicine/get/${props.medicineId}`)

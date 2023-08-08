@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { AiOutlineEdit } from "react-icons/ai";
-import { MdOutlineDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 import "./AvailableMedicines.css";
 
@@ -10,6 +9,13 @@ const AvailableMedicines = () => {
   const [filteredMedicines, setFilteredMedicines] = useState([]);
 
   var { role } = useSelector((store) => store.userReducer);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (role.length < 1) {
+      navigate("/login");
+    }
+  }, []);
 
   useEffect(() => {
     fetch("http://localhost:2121/medicine/getAll")

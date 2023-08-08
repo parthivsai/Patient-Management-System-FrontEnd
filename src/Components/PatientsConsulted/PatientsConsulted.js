@@ -1,19 +1,30 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { AiOutlineEdit } from "react-icons/ai";
-import { MdOutlineDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const PatientsConsulted = () => {
   const [treatedPatients, setTreatedPatients] = useState([]);
   const [filteredTreatedPatients, setFilteredTreatedPatients] = useState([]);
 
   var { userDetails, role } = useSelector((store) => store.userReducer);
-  var docId = userDetails.id;
-  var username = userDetails.user.username;
-  var password = userDetails.user.password;
+
+  if (role) {
+    var docId = userDetails.id;
+    var username = userDetails.user.username;
+    var password = userDetails.user.password;
+  }
 
   const basicAuthHeader = "Basic " + btoa(username + ":" + password);
+
+  var { role } = useSelector((store) => store.userReducer);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (role.length < 1) {
+      navigate("/login");
+      return;
+    }
+  }, []);
 
   useEffect(() => {
     console.log(docId);

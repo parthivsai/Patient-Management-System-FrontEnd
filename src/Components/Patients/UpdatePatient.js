@@ -2,18 +2,24 @@ import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import "./UpdatePatient.css";
-import { Axios } from "axios";
 import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const UpdatePatient = (props) => {
-  const { token } = useSelector((store) => store.userReducer);
-  const data = ["Apple", "Apples", "Band", "Bands"];
+  const { token, role } = useSelector((store) => store.userReducer);
   const [patient, setPatient] = useState([]);
   const [name, setName] = useState("");
   const [age, setAge] = useState();
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (role.length < 1) {
+      navigate("/login");
+    }
+  }, []);
 
   useEffect(() => {
     fetch(`http://localhost:2121/patient/get/${props.patientId}`)
@@ -28,9 +34,6 @@ const UpdatePatient = (props) => {
   }, [patient]);
 
   const handleSave = async () => {
-    // patient.name = name;
-    // patient.age = age;
-    // patient.address = address;
     console.log(patient);
     let newPatient = {
       id: props.patientId,

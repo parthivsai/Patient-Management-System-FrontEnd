@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import PatientSidebar from "../Sidebar/PatientSidebar";
 import DoctorSidebar from "../Sidebar/DoctorSidebar";
@@ -18,9 +18,17 @@ import PatientAppointments from "../PatientAppointments/PatientAppointments";
 import ApprovalRequest from "../ApprovalRequest/ApprovalRequest";
 import UpcomingAppointments from "../UpcomingAppointments/UpcomingAppointments";
 import Visits from "../Visits/Visits";
-
 const Home = () => {
   var { role } = useSelector((store) => store.userReducer);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (role.length < 1) {
+      navigate("/login");
+    }
+  }, []);
+
   return (
     <div>
       {console.log(role)}
@@ -52,29 +60,6 @@ const Home = () => {
         <Route path="/doctors" element={<Doctors />} />
         <Route path="/medicines" element={<Medicines />} />
         <Route path="/visits" element={<Visits />} />
-
-        {/* <Route path={"/godowns"} element={<Godowns />} />
-        <Route path={"/addGodown"} element={<AddGodown />} />
-        <Route path={"/updateGodown"} element={<UpdateGodown />} />
-
-        <Route path={"/employees"} element={<Employees />} />
-        <Route path={"/addEmployee"} element={<AddEmployee />} />
-        <Route path={"/updateEmployee"} element={<UpdateEmployee />} />
-
-        <Route path={"/products"} element={<Products />} />
-        <Route path={"/addProducts"} element={<AddProducts />} />
-
-        <Route path={"/Inwards"} element={<Inwards />} />
-        <Route path={"/addInwards"} element={<AddInwards />} />
-        <Route path={"/updateInwards"} element={<UpdateInwards />} />
-
-        <Route path={"/deliveries"} element={<Deliveries />} />
-        <Route path={"/updateDelivery"} element={<UpdateDelivery />} />
-        <Route path={"/addDelivery"} element={<AddDelivery />} />
-
-        <Route path={"/returns"} element={<Returns />} />
-        <Route path={"/addReturns"} element={<AddReturns />} />
-        <Route path={"updateReturns"} element={<UpdateReturns />} /> */}
       </Routes>
     </div>
   );

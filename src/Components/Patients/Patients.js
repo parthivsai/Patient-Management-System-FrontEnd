@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { AiOutlineEdit } from "react-icons/ai";
 import { MdOutlineDelete } from "react-icons/md";
 import { createPortal } from "react-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 
@@ -16,15 +17,19 @@ const Patients = () => {
   const [patientId, setPatientId] = useState();
 
   var { token, role } = useSelector((store) => store.userReducer);
-  //   var docId = userDetails.id;
-  //   var username = userDetails.user.username;
-  //   var password = userDetails.user.password;
 
-  //   const basicAuthHeader = "Basic " + btoa(username + ":" + password);
+  const navigate = useNavigate();
+  useEffect(() => {
+    console.log(role);
+    if (role.length < 1) {
+      console.log(
+        "Coming here while loading after refresh and role is: " + role
+      );
+      navigate("/login");
+    }
+  }, []);
 
   useEffect(() => {
-    // console.log(docId);
-    // console.log(username, password);
     fetch("http://localhost:2121/patient/getAll")
       .then((response) => response.json())
       .then((data) => {
@@ -66,25 +71,12 @@ const Patients = () => {
       <div className="Patient-Container">
         <div>
           <h1 className="text-center">Patients</h1>
-          {/* <label className="searchLabel">Search</label>
-          <input
-            className="form-control searchFilter"
-            type="text"
-            placeholder="Search.."
-            onChange={handleFilterChange}
-          /> */}
         </div>
         <div className="portaldiv">
           {showUpdatePatient &&
             createPortal(
               <UpdatePatient
                 patientId={patientId}
-                //   handleSave={handleSave}
-                //   focusLength={focusLength}
-                //   shortLength={shortLength}
-                //   longLength={longLength}
-                //   autoBreak={autoBreak}
-                //   autoPomo={autoPomo}
                 onClose={() => setShowUpdatePatient(false)}
               />,
               document.getElementById("root")

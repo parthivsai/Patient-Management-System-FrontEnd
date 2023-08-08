@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { createPortal } from "react-dom";
+import { useNavigate } from "react-router-dom";
 import PrescribePatient from "./PrescribePatient";
 
 const UpcomingAppointments = () => {
@@ -12,8 +13,21 @@ const UpcomingAppointments = () => {
   const [doctorId, setDoctorId] = useState("");
   const [getDate, setGetDate] = useState("");
 
+  var { role } = useSelector((store) => store.userReducer);
+  const navigate = useNavigate();
+
+  if (role) {
+    var docId = userDetails.id;
+  }
+
   useEffect(() => {
-    fetch(`http://localhost:2121/status/getByDoc/approved/${userDetails.id}`)
+    if (role.length < 1) {
+      navigate("/login");
+    }
+  }, []);
+
+  useEffect(() => {
+    fetch(`http://localhost:2121/status/getByDoc/approved/${docId}`)
       .then((response) => response.json())
       .then((data) => setUpcomingAppointments(data));
   }, []);

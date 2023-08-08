@@ -13,14 +13,18 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  var { loading, messageLogin, messageSignup, error, token, role } =
-    useSelector((store) => store.userReducer);
+  var { messageLogin, messageSignup, error, token, role } = useSelector(
+    (store) => store.userReducer
+  );
 
   const dispatch = useDispatch();
 
   const onLoginClick = (event) => {
     event.preventDefault();
     dispatch(userLogin({ username, password }));
+    if (token) {
+      localStorage.setItem("token", token);
+    }
     if (token != null) {
       console.log(token);
       if (role.length > 1 && role === "ADMIN") {
@@ -74,11 +78,9 @@ const Login = () => {
                   <div className="card-body p-5 mx-4">
                     <div>
                       <img className="imgstyle" src={pms} alt="logo"></img>
-                      {/* <h5>Welcome to Patient Management Portal</h5> */}
                     </div>
 
                     <form>
-                      {/* <p>Login/Register your Account</p> */}
                       <div className="form-group mb-4">
                         <label className="form-label">Username</label>
                         <input

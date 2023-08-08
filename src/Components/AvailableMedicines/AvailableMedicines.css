@@ -61,16 +61,13 @@ tr:last-of-type td:last-of-type {
 
 .outer {
   text-align: center;
-  /* margin-top: 10px; */
 }
 .inner {
   display: inline-block;
-  /* margin-top: 10px; */
 }
 
 .right {
   margin-right: 1.5rem;
-  /* margin-top: 4px; */
 }
 
 .searchFilter {

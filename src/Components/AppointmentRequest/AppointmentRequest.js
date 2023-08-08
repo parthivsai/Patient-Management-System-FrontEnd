@@ -2,18 +2,26 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "../Register/modal.css";
 
 const AppointmentRequest = (props) => {
   const [symptoms, setSymptoms] = useState("");
   const [timeSlot, setTimeSlot] = useState("");
-  // const [day, setDay] = useState("");
 
   const slots = ["10AM - 11AM", "11AM - 12PM", "2PM - 3PM", "3PM - 4PM"];
-  // const days = ["Tomorrow", "DayAfterTomorrow"];
 
   const [minDate, setMinDate] = useState("");
   const [selectedDate, setSelectedDate] = useState("");
+
+  var { role } = useSelector((store) => store.userReducer);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (role.length < 1) {
+      navigate("/login");
+    }
+  }, []);
 
   useEffect(() => {
     const today = new Date();
@@ -23,7 +31,6 @@ const AppointmentRequest = (props) => {
   }, []);
 
   const handleSave = () => {
-    // console.log(day, timeSlot);
     if (selectedDate === "" || timeSlot.length <= 0) {
       toast.error("Invalid Request! Fill in the Details", {
         style: {
@@ -103,17 +110,6 @@ const AppointmentRequest = (props) => {
               onChange={(event) => setSelectedDate(event.target.value)}
             />
           </div>
-          {/* <div className="select">
-            <select
-              className="select"
-              onClick={(event) => setDay(event.target.value)}
-            >
-              <option value="">Select a day</option>
-              {days.map((item) => (
-                <option value={item}>{item}</option>
-              ))}
-            </select>
-          </div> */}
           <div className="select">
             <select
               className="select"

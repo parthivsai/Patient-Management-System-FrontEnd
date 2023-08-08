@@ -1,19 +1,25 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import { AiOutlineEdit } from "react-icons/ai";
-import { MdOutlineDelete } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const MedicinesPrescribed = () => {
   const [patientMeds, setPatientMeds] = useState([]);
   const [filteredMeds, setFilteredMeds] = useState([]);
 
   var { userDetails, role } = useSelector((store) => store.userReducer);
-  var patId = userDetails.id;
-  var username = userDetails.user.username;
-  var password = userDetails.user.password;
+  if (role) {
+    var patId = userDetails.id;
+    var username = userDetails.user.username;
+    var password = userDetails.user.password;
+  }
 
-  const basicAuthHeader = "Basic " + btoa(username + ":" + password);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (role.length < 1) {
+      navigate("/login");
+    }
+  }, []);
 
   useEffect(() => {
     console.log(patId);
